@@ -23,20 +23,23 @@ app.add_middleware(
 
 class TranslationInput(BaseModel):
     query: str
+    executionReport:bool
 
 @app.post("/agent")
 async def agentapi(data: TranslationInput):
 
     res = await graph.ainvoke({'messages':[HumanMessage(content=data.query)]})
 
-    execution = await chainExecution.ainvoke({
-        "fullState": json.dumps(
-            res["messages"],
-            default=str,
-            ensure_ascii=False,
-            indent=2
-        )
-    })
+    execution = ''
+    if data.executionReport : 
+        execution = await chainExecution.ainvoke({
+            "fullState": json.dumps(
+                res["messages"],
+                default=str,
+                ensure_ascii=False,
+                indent=2
+            )
+        })
 
     return {
         'answer':res["messages"][-1].content,
