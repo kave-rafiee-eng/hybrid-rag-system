@@ -10,4 +10,5 @@ ipykernel
 python-dotenv
 rank_bm25
 grandalf
-sniffio
+fastapi
+uvicorn[standard]
