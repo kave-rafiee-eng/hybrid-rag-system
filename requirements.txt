@@ -1,0 +1,12 @@
+langchain-community
+langchain-core
+langgraph
+langchain-openai
+langchain
+openai
+python-dotenv
+langchain-chroma
+ipykernel
+python-dotenv
+rank_bm25
+grandalf

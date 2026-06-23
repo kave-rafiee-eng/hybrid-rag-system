@@ -1,0 +1,11 @@
+python -m venv venv
+
+venv\Scripts\activate
+
+pip install ipykernel
+python -m ipykernel install --user --name venv --display-name "hybrid-rag-system"
+
+pip install -r requirements.txt
+
+pip config --user unset global.index
+pip config --user unset global.index-url
