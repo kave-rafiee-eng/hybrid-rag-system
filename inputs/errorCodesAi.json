@@ -1,0 +1,296 @@
+[
+  {
+    "code": "0",
+    "name": "test",
+    "reason": "",
+    "solution": "",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "1",
+    "name": "FLT DRV ",
+    "reason": "The drive has an error and does not allow the motor to move",
+    "solution": "First, press the error reset button on the drive, and if the error occurs again, refer to the drive's error list.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "13",
+    "name": "E-Travel Time",
+    "reason": "The allowed time for cabin movement has expired",
+    "solution": "Go to the menu and settings, set the TRAVEL TIME according to the standard, then to fix the error, reset the board by turning it off and on again.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "14",
+    "name": "E-T_level / LongTimeLevel",
+    "reason": "The cabin approached the floor, reduced speed, but did not reach the floor within the maximum set time.",
+    "solution": "This error may occur for various reasons. First, go to the settings menu and check the Level_time. If the setting is correct, the error may be due to excessive slowness or leveling speed. If the connection between the board and the drive is serial or analog, these speeds are set within the board. Visit the drive settings menu within the board to change the values. In case of digital binary connection between the board and the drive, these speeds are set within the drive.\n\nIt is also possible that the drive cannot move the cabin at low speed and has stopped.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "16",
+    "name": "FTO",
+    "reason": "Due to excessive heat, the FTO motor protection has been activated.",
+    "solution": "Check the engine fan\nIf you are sure of the engine temperature but the error still shows, check the wiring from fto to the board input. You can also test by connecting the fto input to the power supply ground (gnd).",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "17",
+    "name": "E-EndDoor / End Door Time",
+    "reason": "The cabinet door does not close completely after several attempts",
+    "solution": "Go to the settings menu in the door time section and first check that the Close Timeout and URA Timeout are set correctly. If the settings are correct, check the close relay on the codec. If the door attempts to close but the related safety measures are not completed, the relevant contacts or wiring have issues.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "2",
+    "name": "E-PH UNB",
+    "reason": "Error of unbalanced input three-phase",
+    "solution": "Measure the three-phase input voltages using a voltmeter. The difference between any two phases should be about 380 volts, and the difference between each phase and the neutral (mp) should be about 220 volts. Also, ensure that the two phases are not of the same name.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "23",
+    "name": "RLS",
+    "reason": "The feedback of the main contactor does not match the status of the contactor command.",
+    "solution": "The contactor may be permanently engaged or its auxiliary blade may be faulty.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "24",
+    "name": "CUT RLS ",
+    "reason": "",
+    "solution": "The contactor feedback in the path is interrupted momentarily or permanently, and safety circuits may be interrupted momentarily. This error is usually caused by the contact cut of the floor doors.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "25",
+    "name": "E-TC",
+    "reason": "The motor contactor does not engage or remains engaged after stopping.",
+    "solution": "Check the voltage of the TC contactor (should not be less than 110 volts)\nInspect the contactor mechanically by pressing it (it should have a smooth back and forth movement when pressed)",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "28",
+    "name": "Cut Serial",
+    "reason": "Disconnection of the main board and codec connection",
+    "solution": "First, ensure that the codec board is turned on, then measure the codec's supply voltage to ensure it is within the appropriate range, with a minimum of 22 volts and a maximum of 26 volts. Next, check the traveling wires related to the serial connection. The serial connection on the board is CA, CB.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "36",
+    "name": "E-1CF Lost / Error 1CF",
+    "reason": "Sensor 1CF is not functioning properly",
+    "solution": "The 1CF sensor blinks twice or quickly during movement or doesn't work at all. Check the travel, the magnets may not be in front of the 1CF sensor, causing unstable performance.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "39",
+    "name": " Close Timeout",
+    "reason": "The cabin door has not closed within the maximum set time.",
+    "solution": "Please refer to the menu settings section for door time. First, check that Close Timeout and URA Timeout are set correctly. If the settings are correct, check the door close relay on the codec. If the door attempts to close but the related safety measures are not completed, the related contacts or wiring may have issues. Also, ensure the proper functioning of the door header board.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "4",
+    "name": "Safety Cir Cut",
+    "reason": "All safety circuits (71, 66, 69, 68) are disconnected.",
+    "solution": "First, check the 110-volt transformer output of the panel. If there is no voltage, check the fuse and the power board. If the fuse is intact, check the wiring and the 110-volt circuit up to point 71. It is possible that one of the safety circuits, like the parachute or one of the emergency stop buttons, has been activated.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "41",
+    "name": "E-URA",
+    "reason": "The allowed time to complete circuit 68 has expired",
+    "solution": "First, go to the settings menu and check the URA Timeout value, then check the proper functioning of the header board and the completion of safety measures.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "47",
+    "name": "E-CF3",
+    "reason": "The CF3 magnet is not working properly",
+    "solution": "Check the CF3 sensor pulses between the layers and ensure the correct arrangement of the magnets.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "5",
+    "name": "E-Safty71",
+    "reason": "Circuit 71 is broken",
+    "solution": "Check the circuits from 110 volts to 71, including contacts, parachute, bottom well stop, etc.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "50",
+    "name": "E-ENC_dir",
+    "reason": "The direction of the encoder pulses is incorrect",
+    "solution": "Go to the Polarity_Setting menu in the Enc_Pol section and reverse the direction.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "51",
+    "name": "E-OverFloor",
+    "reason": "Software error related to position calculations",
+    "solution": "Factory reset the board once and set up the settings from the beginning",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "53",
+    "name": "E-MT_dir",
+    "reason": "Motor direction error during identification of floors and position",
+    "solution": "Go to the Polarity_Setting menu in the Motor_Pol section and reverse the direction.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "54",
+    "name": "E-CAL_ref",
+    "reason": "This error pertains to the templated reference in the direct approach mode, meaning that the reference was not found.",
+    "solution": "In the spatial range where the CA1 switch is active, arrange the reference magnet using the template.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "55",
+    "name": "E-ENC_PTM",
+    "reason": "This error pertains to the reference for converting pulse to millimeters in the direct approach mode, meaning that the reference value has changed compared to the calibrated value.",
+    "solution": "Perform the cal_floor process again from the menu. If the error repeats, the encoder has encountered a problem and is generating errors beyond the permissible limit.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "56",
+    "name": "E-CalSp_01",
+    "reason": "This error pertains to calibrating speeds in direct approach mode, meaning that the cabin does not have enough space to test the speeds.",
+    "solution": "From the drive settings, increase the start and stop acceleration or decrease the maximum speed. Then enter the process menu and perform cal_speed.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "57",
+    "name": "E-CrData",
+    "reason": "One of the important board settings has changed and needs to be reset.",
+    "solution": "The board will automatically reset after 7 seconds. If it does not reset, disconnect and reconnect the power once.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "58",
+    "name": "E-DrvCom",
+    "reason": "Error in Modbus connection with the drive",
+    "solution": "- Ensure the correct connection of the RS485 line\n- The baud rate and connection format settings on the board and the drive should be set identically",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "6",
+    "name": "E-Cut68",
+    "reason": "Safety feedback 66 has been interrupted while moving (momentary or persistent)",
+    "solution": "Look at LED 66 on the board and move the cabin by calling it. If 66 blinks during the movement, the floor door contacts have a problem.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "60",
+    "name": "E-PH Over",
+    "reason": "Excessive increase in three-phase or single-phase input voltage (depending on settings)",
+    "solution": "To set the maximum voltage, go to the phase control menu in the over volt section.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "61",
+    "name": "E-PH Under",
+    "reason": "Excessive reduction of three-phase or single-phase input voltage (depending on settings)",
+    "solution": "To set the minimum fault voltage, go to the phase control settings menu under the under volt section.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "62",
+    "name": "E-EncZero",
+    "reason": "The number of encoder pulses is zero",
+    "solution": "The encoder connection to the board is disconnected or the encoder is faulty",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "63",
+    "name": "E-OverLoad",
+    "reason": "Excess cabin weight has caused an error and forced the elevator to stop.",
+    "solution": "",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "64",
+    "name": "E-PH Rev",
+    "reason": "The three-phase input has a phase shift error",
+    "solution": "Check the incoming three-phase power. If the incoming phase has been swapped, switch the positions of R and S from the three-phase input to the board to correct the error.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "65",
+    "name": "E-STP",
+    "reason": "",
+    "solution": "",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "66",
+    "name": "E-pulseLost",
+    "reason": "Encoder pulses have an error with the calibrated value from the layers",
+    "solution": "First, recalibrate the layers again. If the error persists, the encoder might be damaged and causing an error beyond the permissible limit.\n\nAdditionally, noise on the encoder cable might be causing the error. To resolve the noise, check the grounding and shielding connections.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "67",
+    "name": "E-ZADO",
+    "reason": "The ZADO input sensor is giving incorrect pulses. This sensor is used to open the door before reaching the floor.",
+    "solution": "First, ensure that the sensor connected to ZADO is functioning properly. If the sensor is fine, then the arrangement of the magnets is incorrect.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "68",
+    "name": "E-SoftWare",
+    "reason": "Software error on the advance board",
+    "solution": "Factory reset the board and re-enter the settings. If the error persists, contact support.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "7",
+    "name": "E-Cut69",
+    "reason": "Safety feedback 69 has been interrupted while moving",
+    "solution": "Look at LED 69 on the board and summon the cabin to move. If the LED is blinking, there is a problem with the door contact movement of the cabin.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "8",
+    "name": "E-Cut68",
+    "reason": "Safety feedback 68 is interrupted while moving.",
+    "solution": "Look at LED 68 on the board and summon the cabin to move. If the LED blinks during movement, the floor door lock has a problem.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "80",
+    "name": "E-DayCounter ",
+    "reason": "",
+    "solution": "",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "81",
+    "name": "E-PH Lost",
+    "reason": "Input phase loss of one or more phases",
+    "solution": "Check the three-phase input to the panel",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "83",
+    "name": "Safty90",
+    "reason": "",
+    "solution": "",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "84",
+    "name": "CFx / Cut 1CF-CF3",
+    "reason": "Inputs 1cf and cf3 are simultaneously disconnected",
+    "solution": "First, check the correct connection of the sensors, then check the correct arrangement of the magnets.",
+    "additional_description_for_ai": ""
+  },
+  {
+    "code": "9",
+    "name": "E-CAx / Error CA1-CAN",
+    "reason": "Both switches CA1 and CAN are simultaneously off",
+    "solution": "Check the wiring of the CA1 and CAN switches. To ensure the board, momentarily connect +24 volts to the input of CA1 and CAN. The corresponding LED should light up and then turn off.",
+    "additional_description_for_ai": ""
+  }
+]
