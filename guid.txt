@@ -12,4 +12,4 @@ pip config --user unset global.index-url
 
 python -m agentaRavis.main
 
-uvicorn agentaRavis.main:app --reload
+uvicorn agentaRavis.main:app --host 0.0.0.0 --port 8000 --reload
