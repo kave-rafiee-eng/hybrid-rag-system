@@ -10,3 +10,4 @@ class AgentState(TypedDict):
     query: str
     history: list[LangChainHistoryMessage]
     messages: Annotated[list[BaseMessage], add_messages]
+    userid: str

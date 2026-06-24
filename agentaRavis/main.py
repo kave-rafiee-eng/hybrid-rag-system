@@ -28,7 +28,7 @@ class AgentInput(BaseModel):
     query: str
     executionReport: bool = False
     history: list[LangChainHistoryMessage] = Field(default_factory=list)
-
+    userid : str
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -36,10 +36,12 @@ logger = logging.getLogger(__name__)
 
 @app.post("/agent")
 async def agentapi(data: AgentInput):
+
     res = await graph.ainvoke({
         "query": data.query,
         "history": data.history,
         "messages": [],
+        "userid":data.userid
     })
 
     execution = ""

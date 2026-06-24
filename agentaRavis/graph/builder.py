@@ -6,11 +6,24 @@ from agentaRavis.core.llms import llm
 from agentaRavis.graph.prompts import SYSTEM_PROMPT
 from agentaRavis.graph.state import AgentState
 from agentaRavis.schemas.history import history_to_messages
+from agentaRavis.tools.longTermMemory import fetch_user_memory
 from agentaRavis.tools.registry import TOOLS
 
 
 def init_state(state: AgentState):
-    messages = [SystemMessage(content=SYSTEM_PROMPT)]
+    userid = state.get("userid") or ""
+    memory = fetch_user_memory(userid)
+
+    system_parts = [SYSTEM_PROMPT.strip()]
+    if userid:
+        system_parts.append(f"User context:\n- userid: {userid}")
+    if memory:
+        system_parts.append(
+            "Long-term user memory (facts from past conversations):\n"
+            f"{memory}"
+        )
+
+    messages = [SystemMessage(content="\n\n".join(system_parts))]
     messages.extend(history_to_messages(state.get("history", [])))
     messages.append(HumanMessage(content=state["query"]))
     return {"messages": messages}
