@@ -1,49 +1,65 @@
-
 import json
-from pydantic import BaseModel
-import agentaRavis.core.config 
+import logging
 
-from langchain_core.messages import AIMessage, HumanMessage,ToolMessage
+from pydantic import BaseModel, Field
+import agentaRavis.core.config
+
+from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 from agentaRavis.core.llmStateExecution import chainExecution
 from agentaRavis.graph.builder import graph
+from agentaRavis.schemas.history import LangChainHistoryMessage
 
-import asyncio
-from fastapi import FastAPI , WebSocket
+from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-class TranslationInput(BaseModel):
+
+class AgentInput(BaseModel):
     query: str
-    executionReport:bool
+    executionReport: bool = False
+    history: list[LangChainHistoryMessage] = Field(default_factory=list)
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 @app.post("/agent")
-async def agentapi(data: TranslationInput):
+async def agentapi(data: AgentInput):
+    res = await graph.ainvoke({
+        "query": data.query,
+        "history": data.history,
+        "messages": [],
+    })
 
-    res = await graph.ainvoke({'messages':[HumanMessage(content=data.query)]})
-
-    execution = ''
-    if data.executionReport : 
+    execution = ""
+    if data.executionReport:
         execution = await chainExecution.ainvoke({
             "fullState": json.dumps(
                 res["messages"],
                 default=str,
                 ensure_ascii=False,
-                indent=2
+                indent=2,
             )
         })
 
+    last_ai = next(
+        (msg for msg in reversed(res["messages"]) if isinstance(msg, AIMessage)),
+        None,
+    )
+
     return {
-        'answer':res["messages"][-1].content,
-        'Execution':execution
+        "answer": last_ai.content if last_ai else "",
+        "Execution": execution,
     }
 
 def format_messages(messages):
