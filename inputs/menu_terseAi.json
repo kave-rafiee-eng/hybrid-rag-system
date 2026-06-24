@@ -1,0 +1,1172 @@
+[
+  {
+    "id": "0",
+    "label": "Num Of Stop",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 2,
+    "maxValue": 8,
+    "step": 1
+  },
+  {
+    "id": "10",
+    "label": "Music Volume",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Sound"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "%",
+    "minValue": 0,
+    "maxValue": 100,
+    "step": 5
+  },
+  {
+    "id": "11",
+    "label": "Talk Volume",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Sound"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "%",
+    "minValue": 0,
+    "maxValue": 100,
+    "step": 5
+  },
+  {
+    "id": "12",
+    "label": "Gang Select",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Sound"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "OFF",
+        "description": ""
+      },
+      {
+        "value": "1",
+        "description": ""
+      },
+      {
+        "value": "2",
+        "description": ""
+      },
+      {
+        "value": "3",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "label": "Inputs Type",
+    "type": "collection of settings where each setting has a label and selects one option from the same shared option list",
+    "navigationToMenu": [
+      "main"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "NO",
+        "description": ""
+      },
+      {
+        "value": "NC",
+        "description": ""
+      }
+    ],
+    "itemLabels": [
+      {
+        "value": "RLS",
+        "description": ""
+      },
+      {
+        "value": "DRC",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "label": "Num & Talk",
+    "type": "array of setting groups. Each group may contain integer input settings and single-option selection settings. The user first selects a group item and then edits the settings within that group",
+    "navigationToMenu": [
+      "main"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "settings": [
+      {
+        "type": "single setting where the user selects one option from a predefined list",
+        "label": "L",
+        "description": "",
+        "description_for_ai": "",
+        "options": [
+          {
+            "value": "0",
+            "description": ""
+          },
+          {
+            "value": "1",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "type": "single setting where the user selects one option from a predefined list",
+        "label": "SR",
+        "description": "",
+        "description_for_ai": "",
+        "options": [
+          {
+            "value": "?",
+            "description": ""
+          },
+          {
+            "value": "0",
+            "description": ""
+          },
+          {
+            "value": "1",
+            "description": ""
+          },
+          {
+            "value": "2",
+            "description": ""
+          },
+          {
+            "value": "3",
+            "description": ""
+          },
+          {
+            "value": "4",
+            "description": ""
+          },
+          {
+            "value": "5",
+            "description": ""
+          },
+          {
+            "value": "6",
+            "description": ""
+          },
+          {
+            "value": "7",
+            "description": ""
+          },
+          {
+            "value": "8",
+            "description": ""
+          },
+          {
+            "value": "9",
+            "description": ""
+          },
+          {
+            "value": "G",
+            "description": ""
+          },
+          {
+            "value": "P",
+            "description": ""
+          },
+          {
+            "value": "B",
+            "description": ""
+          },
+          {
+            "value": "r",
+            "description": ""
+          },
+          {
+            "value": "a",
+            "description": ""
+          },
+          {
+            "value": "b",
+            "description": ""
+          },
+          {
+            "value": "c",
+            "description": ""
+          },
+          {
+            "value": "d",
+            "description": ""
+          },
+          {
+            "value": "e",
+            "description": ""
+          },
+          {
+            "value": "f",
+            "description": ""
+          },
+          {
+            "value": "g",
+            "description": ""
+          },
+          {
+            "value": "h",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "type": "single setting where the user selects one option from a predefined list",
+        "label": "Talk",
+        "description": "",
+        "description_for_ai": "",
+        "options": [
+          {
+            "value": "???",
+            "description": ""
+          },
+          {
+            "value": "L1",
+            "description": ""
+          },
+          {
+            "value": "L2",
+            "description": ""
+          },
+          {
+            "value": "L3",
+            "description": ""
+          },
+          {
+            "value": "L4",
+            "description": ""
+          },
+          {
+            "value": "L5",
+            "description": ""
+          },
+          {
+            "value": "L6",
+            "description": ""
+          },
+          {
+            "value": "L7",
+            "description": ""
+          },
+          {
+            "value": "L8",
+            "description": ""
+          },
+          {
+            "value": "Grn",
+            "description": ""
+          },
+          {
+            "value": "Labi",
+            "description": ""
+          },
+          {
+            "value": "Roof",
+            "description": ""
+          },
+          {
+            "value": "Pool",
+            "description": ""
+          },
+          {
+            "value": "Par",
+            "description": ""
+          },
+          {
+            "value": "Par1",
+            "description": ""
+          },
+          {
+            "value": "Par2",
+            "description": ""
+          },
+          {
+            "value": "B",
+            "description": ""
+          },
+          {
+            "value": "B1",
+            "description": ""
+          },
+          {
+            "value": "B2",
+            "description": ""
+          },
+          {
+            "value": "Tr1",
+            "description": ""
+          },
+          {
+            "value": "Tr2",
+            "description": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "label": "Service Type",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Collective DN",
+        "description": ""
+      },
+      {
+        "value": "Full Collective",
+        "description": ""
+      },
+      {
+        "value": "Push Button",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "20",
+    "label": "Control Type",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Door"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Loaded",
+        "description": ""
+      },
+      {
+        "value": "68",
+        "description": ""
+      },
+      {
+        "value": "69",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "label": "5KT Type",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Door"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "NO",
+        "description": ""
+      },
+      {
+        "value": "NC",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "label": "WelcomeFloor",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Sound"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "0",
+        "description": ""
+      },
+      {
+        "value": "1",
+        "description": ""
+      },
+      {
+        "value": "2",
+        "description": ""
+      },
+      {
+        "value": "3",
+        "description": ""
+      },
+      {
+        "value": "4",
+        "description": ""
+      },
+      {
+        "value": "5",
+        "description": ""
+      },
+      {
+        "value": "6",
+        "description": ""
+      },
+      {
+        "value": "OFF",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "label": "Park Floor",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Floor"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 8,
+    "step": 1
+  },
+  {
+    "id": "25",
+    "label": "Time To Park",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Floor"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "m",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  },
+  {
+    "id": "26",
+    "label": "Fire Floor",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Floor"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 8,
+    "step": 1
+  },
+  {
+    "id": "27",
+    "label": "Waiting Floor",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Floor"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  },
+  {
+    "id": "28",
+    "label": "UD ReleaseDel",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Timer"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "29",
+    "label": "TC ReleaseDel",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Timer"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "3",
+    "label": "Travel Time",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  },
+  {
+    "id": "31",
+    "label": "Leveling Time",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Timer"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "S",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  },
+  {
+    "id": "32",
+    "label": "Standby Time",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Timer"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "S",
+    "minValue": 0,
+    "maxValue": 1000,
+    "step": 5
+  },
+  {
+    "id": "33",
+    "label": "URA Delay",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Timer"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "34",
+    "label": "Enable",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Motor Safe"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Disable",
+        "description": ""
+      },
+      {
+        "value": "Enable",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "label": "Fast OverC",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Motor Safe"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "A",
+    "minValue": 0,
+    "maxValue": 100,
+    "step": 1
+  },
+  {
+    "id": "36",
+    "label": "Slow OverC",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Motor Safe"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "A",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  },
+  {
+    "id": "37",
+    "label": "Time OverC",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Motor Safe"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 10,
+    "step": 0.1
+  },
+  {
+    "id": "38",
+    "label": "StartSlow Del",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>HYD Setting"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "39",
+    "label": "StartFast Del",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>HYD Setting"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "40",
+    "label": "Star To Delta",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>HYD Setting"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "41",
+    "label": "MotorStartDel",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>HYD Setting"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "42",
+    "label": "Enable",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>1CF Error"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": []
+  },
+  {
+    "id": "43",
+    "label": "Timeout",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>1CF Error"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 0,
+    "step": 1
+  },
+  {
+    "id": "44",
+    "label": "Phase Reverse",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Phase Control"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Disable",
+        "description": ""
+      },
+      {
+        "value": "Enable",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "45",
+    "label": "Phase Fault",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Phase Control"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Disable",
+        "description": ""
+      },
+      {
+        "value": "Enable",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "46",
+    "label": "One Phase",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Phase Control"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Disable",
+        "description": ""
+      },
+      {
+        "value": "Enable",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "47",
+    "label": "CF3 Delay",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Landing"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "48",
+    "label": "CF3 Flag",
+    "type": "array of setting groups. Each group may contain integer input settings and single-option selection settings. The user first selects a group item and then edits the settings within that group",
+    "navigationToMenu": [
+      "main>Landing"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "settings": [
+      {
+        "type": "single setting where the user selects one option from a predefined list",
+        "label": "jmp1",
+        "description": "",
+        "description_for_ai": "",
+        "options": [
+          {
+            "value": "0",
+            "description": ""
+          },
+          {
+            "value": "1",
+            "description": ""
+          },
+          {
+            "value": "2",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "type": "single setting where the user selects one option from a predefined list",
+        "label": "jmp2",
+        "description": "",
+        "description_for_ai": "",
+        "options": [
+          {
+            "value": "-2",
+            "description": ""
+          },
+          {
+            "value": "-1",
+            "description": ""
+          },
+          {
+            "value": "0",
+            "description": ""
+          },
+          {
+            "value": "1",
+            "description": ""
+          },
+          {
+            "value": "2",
+            "description": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "49",
+    "label": "jump1 Speed",
+    "type": "array of setting groups. Each group may contain integer input settings and single-option selection settings. The user first selects a group item and then edits the settings within that group",
+    "navigationToMenu": [
+      "main>Landing"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "settings": [
+      {
+        "type": "single setting where the user selects one option from a predefined list",
+        "label": "jump1",
+        "description": "",
+        "description_for_ai": "",
+        "options": [
+          {
+            "value": "Slow",
+            "description": ""
+          },
+          {
+            "value": "Rev",
+            "description": ""
+          },
+          {
+            "value": "Fast",
+            "description": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "50",
+    "label": "MotorStopDel",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>HYD Setting"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": -10,
+    "maxValue": 10,
+    "step": 0.1
+  },
+  {
+    "id": "51",
+    "label": "Direction",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Calibration"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "DOWN",
+        "description": ""
+      },
+      {
+        "value": "UP",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "52",
+    "label": "Speed",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Calibration"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Slow",
+        "description": ""
+      },
+      {
+        "value": "Rev",
+        "description": ""
+      },
+      {
+        "value": "Fast",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "54",
+    "label": "Enable",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Emergency"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "Disable",
+        "description": ""
+      },
+      {
+        "value": "Enable",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "55",
+    "label": "Direction",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Emergency"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": [
+      {
+        "value": "DOWN",
+        "description": ""
+      },
+      {
+        "value": "UP",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "id": "56",
+    "label": "Num Of Door",
+    "type": "single setting where the user selects one option from a predefined list",
+    "navigationToMenu": [
+      "main>Door>Second Door"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "options": []
+  },
+  {
+    "id": "57",
+    "label": "Door Select",
+    "type": "array of setting groups. Each group may contain integer input settings and single-option selection settings. The user first selects a group item and then edits the settings within that group",
+    "navigationToMenu": [
+      "main>Door>Second Door"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "settings": [
+      {
+        "type": "single setting with an integer input value",
+        "label": "Door Select",
+        "unit": "",
+        "minValue": 0,
+        "maxValue": 0,
+        "step": 1,
+        "description": "",
+        "description_for_ai": ""
+      }
+    ]
+  },
+  {
+    "id": "58",
+    "label": "All Floors",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Timer>1CF Delay"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 0,
+    "step": 0.05
+  },
+  {
+    "id": "59",
+    "label": "Up/Down Del",
+    "type": "array of setting groups. Each group may contain integer input settings and single-option selection settings. The user first selects a group item and then edits the settings within that group",
+    "navigationToMenu": [
+      "main>Timer>1CF Delay"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "settings": [
+      {
+        "type": "single setting with an integer input value",
+        "label": "UP",
+        "unit": "",
+        "minValue": 0,
+        "maxValue": 0,
+        "step": 0.05,
+        "description": "",
+        "description_for_ai": ""
+      },
+      {
+        "type": "single setting with an integer input value",
+        "label": "DN",
+        "unit": "",
+        "minValue": 0,
+        "maxValue": 0,
+        "step": 0.05,
+        "description": "",
+        "description_for_ai": ""
+      }
+    ]
+  },
+  {
+    "id": "60",
+    "label": "Open Delay",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "61",
+    "label": "Close Delay",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 20,
+    "step": 0.1
+  },
+  {
+    "id": "62",
+    "label": "End Door Time",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 10,
+    "step": 1
+  },
+  {
+    "id": "63",
+    "label": "Close Timeout",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "",
+    "minValue": 0,
+    "maxValue": 10,
+    "step": 1
+  },
+  {
+    "id": "64",
+    "label": "Door Park",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  },
+  {
+    "id": "65",
+    "label": "69debouncer",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 3,
+    "step": 0.1
+  },
+  {
+    "id": "66",
+    "label": "68debouncer",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 3,
+    "step": 0.1
+  },
+  {
+    "id": "67",
+    "label": "open time",
+    "type": "single setting with an integer input value",
+    "navigationToMenu": [
+      "main>Door>Door Time"
+    ],
+    "description": "",
+    "description_for_ai": "",
+    "unit": "s",
+    "minValue": 0,
+    "maxValue": 200,
+    "step": 1
+  }
+]

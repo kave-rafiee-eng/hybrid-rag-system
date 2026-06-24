@@ -1,11 +1,12 @@
-import json
 import logging
 
 from pydantic import BaseModel, Field
 import agentaRavis.core.config
 
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
+from agentaRavis.core.execution_state import build_execution_state
 from agentaRavis.core.llmStateExecution import chainExecution
+from agentaRavis.core.llms import llm
 from agentaRavis.graph.builder import graph
 from agentaRavis.schemas.history import LangChainHistoryMessage
 
@@ -44,11 +45,10 @@ async def agentapi(data: AgentInput):
     execution = ""
     if data.executionReport:
         execution = await chainExecution.ainvoke({
-            "fullState": json.dumps(
-                res["messages"],
-                default=str,
-                ensure_ascii=False,
-                indent=2,
+            "fullState": build_execution_state(
+                query=data.query,
+                history=data.history,
+                messages=res["messages"],
             )
         })
 
@@ -60,6 +60,7 @@ async def agentapi(data: AgentInput):
     return {
         "answer": last_ai.content if last_ai else "",
         "Execution": execution,
+        'model':llm.model
     }
 
 def format_messages(messages):

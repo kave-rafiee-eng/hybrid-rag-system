@@ -9,8 +9,17 @@ from langchain_core.tools import tool
 @tool
 def get_errorCode_by_code(code: str) -> str:
     """
-    Get error code reason and solutions for RAVIS control advacne and terse board products.
-    Returns a JSON string containing error details.
+    Get the reason and recommended solutions for error codes related to
+    RAVIS Control Advance and Terse elevator control boards.
+
+    Advance and Terse are elevator control boards developed by RAVIS Control.
+
+    The `code` parameter represents an error code displayed on the LCD,
+    7-segment display, or other indicators when the system detects a fault.
+
+    Returns:
+        A JSON string containing the error code details, possible causes,
+        and recommended solutions.
     """
 
     errorCode = next(
