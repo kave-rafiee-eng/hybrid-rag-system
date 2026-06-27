@@ -1,0 +1,8 @@
+This knowledge base comprises comprehensive technical documentation for the Yaskawa L1000A variable frequency drive series, specifically addressing CIMR-LB and CIMR-LT models across 200V and 400V classes.
+It provides detailed guidance on mechanical installation, electrical wiring, and safety compliance, including strict protocols for grounding, capacitor discharge, and hazardous energy isolation. 
+The collection extensively covers drive configuration, detailing parameter setup for V/f, open-loop vector, closed-loop vector, and permanent magnet motor control modes. 
+Advanced operational features such as auto-tuning, encoder configuration, and elevator-specific logic—including rescue operations, leveling, and anti-rollback control—are thoroughly documented. 
+Users can retrieve information on troubleshooting fault codes, managing maintenance schedules for components like cooling fans and capacitors, and configuring communication protocols such as MEMOBUS/Modbus and CANopen. 
+The content supports technical depth ranging from hardware specifications and terminal assignments to complex control loop tuning and safety standard adherence like EN81 and UL/CE compliance. 
+This resource is well-suited for engineers and technicians seeking to install, configure, operate, and maintain these industrial drives, particularly in elevator applications requiring precise speed control and safety integration. 
+It excludes general consumer electronics or non-Yaskawa drive architectures.
