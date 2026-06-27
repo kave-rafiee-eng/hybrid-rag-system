@@ -4,7 +4,10 @@ import os
 import requests
 from langchain_core.tools import tool
 
-TICKET_API_URL = os.getenv("TICKET_API_URL", "http://127.0.0.1:3000/ticket")
+USER_API_URL = os.getenv(
+    "API_USER_URL",
+    "http://127.0.0.1:3000",
+)
 TICKET_API_TIMEOUT = float(os.getenv("TICKET_API_TIMEOUT", "15"))
 
 
@@ -45,7 +48,6 @@ def _ticket_error(exc: Exception) -> str:
 def create_ticket_for_support(
     question: str,
     user_id: str,
-    description: str,
 ) -> str:
     """
     Create a support ticket for the RAVIS technical support team.
@@ -59,7 +61,6 @@ def create_ticket_for_support(
     Also use when the user directly and clearly asks to open or register a ticket.
 
     Args:
-        question: Short title or summary of the issue (ticket subject).
         user_id: Unique identifier of the user submitting the ticket.
         description: Detailed ticket body including symptoms, error codes, device model,
             steps already tried, and any relevant context from the conversation.
@@ -70,13 +71,11 @@ def create_ticket_for_support(
     """
     payload = {
         "question": question,
-        "userid": user_id,
-        "description": description,
     }
 
     try:
         response = requests.post(
-            TICKET_API_URL,
+            f"{USER_API_URL}/user/{user_id}/tickets",
             json=payload,
             timeout=TICKET_API_TIMEOUT,
         )
@@ -106,7 +105,7 @@ def get_tickets_by_user_id(user_id: str) -> str:
     """
     try:
         response = requests.get(
-            f"{TICKET_API_URL}/userid/{user_id}",
+            f"{USER_API_URL}/user/{user_id}/tickets",
             timeout=TICKET_API_TIMEOUT,
         )
         return _ticket_response(response)

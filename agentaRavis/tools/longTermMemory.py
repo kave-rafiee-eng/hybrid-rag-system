@@ -7,9 +7,9 @@ from langchain_core.tools import tool
 
 logger = logging.getLogger(__name__)
 
-AGENT_MEMORY_API_URL = os.getenv(
-    "AGENT_MEMORY_API_URL",
-    "http://127.0.0.1:3000/agent-memory",
+USER_API_URL = os.getenv(
+    "API_USER_URL",
+    "http://127.0.0.1:3000",
 )
 AGENT_MEMORY_API_TIMEOUT = float(os.getenv("AGENT_MEMORY_API_TIMEOUT", "15"))
 
@@ -53,12 +53,12 @@ def fetch_user_memory(user_id: str) -> str:
 
     try:
         response = requests.get(
-            f"{AGENT_MEMORY_API_URL}/{user_id}",
+            f"{USER_API_URL}/user/{user_id}",
             timeout=AGENT_MEMORY_API_TIMEOUT,
         )
         response.raise_for_status()
         data = response.json() if response.content else {}
-        return data.get("memory") or ""
+        return data.get("agentMemory") or ""
     except Exception as exc:
         logger.warning("Failed to fetch user memory for %s: %s", user_id, exc)
         return ""
@@ -92,8 +92,8 @@ def update_long_term_memory(user_id: str, memory: str) -> str:
     """
     try:
         response = requests.patch(
-            f"{AGENT_MEMORY_API_URL}/{user_id}",
-            json={"memory": memory},
+            f"{USER_API_URL}/user/{user_id}",
+            json={"agentMemory": memory},
             timeout=AGENT_MEMORY_API_TIMEOUT,
         )
         return _memory_response(response)
