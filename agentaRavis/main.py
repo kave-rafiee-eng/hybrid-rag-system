@@ -39,8 +39,8 @@ async def agentapi(data: AgentInput):
 
     if( len(data.history) > 20 ):
         return {
-            "answer": "",
-            "Execution": "تعداد پیام ها بیش از حد مجاز شده لطفا گفت و گوی جدید ایجاد کنید",
+            "Execution": "",
+            "answer": "تعداد پیام ها بیش از حد مجاز شده لطفا گفت و گوی جدید ایجاد کنید",
             'model':'system'
         }
     
