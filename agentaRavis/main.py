@@ -37,6 +37,14 @@ logger = logging.getLogger(__name__)
 @app.post("/agent")
 async def agentapi(data: AgentInput):
 
+    if( len(data.history) > 20 ):
+        return {
+            "answer": "",
+            "Execution": "تعداد پیام ها بیش از حد مجاز شده لطفا گفت و گوی جدید ایجاد کنید",
+            'model':'system'
+        }
+    
+
     res = await graph.ainvoke({
         "query": data.query,
         "history": data.history,
