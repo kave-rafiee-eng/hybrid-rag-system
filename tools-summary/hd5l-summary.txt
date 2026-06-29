@@ -6,3 +6,4 @@ The system supports advanced diagnostics, fault logging, and protection mechanis
 Communication capabilities are defined through RS485 interfaces utilizing MODBUS RTU and ASCII protocols, with specific register mappings and error checking methods.
 Users can retrieve information on hardware specifications, I/O terminal wiring, keypad navigation, and troubleshooting common operational errors.
 This resource is well-suited for engineers and technicians seeking implementation guidelines, configuration parameters, and maintenance procedures for HD5L drive systems, ensuring safe and efficient elevator operation through detailed technical specifications and best practices.
+

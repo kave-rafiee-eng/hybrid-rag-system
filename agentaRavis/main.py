@@ -10,8 +10,10 @@ from agentaRavis.core.llms import llm
 from agentaRavis.graph.builder import graph
 from agentaRavis.schemas.history import LangChainHistoryMessage
 
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket , WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+import json
+import asyncio
 
 app = FastAPI()
 
@@ -73,61 +75,129 @@ async def agentapi(data: AgentInput):
         'model':llm.model
     }
 
-def format_messages(messages):
-    output = []
 
-    for msg in messages:
-        if isinstance(msg, HumanMessage):
-            output.append(f"Human: {msg.content}")
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: list[WebSocket] = []
 
-        elif isinstance(msg, AIMessage):
-            output.append(f"AI: {msg.content}")
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.append(websocket)
 
-            if msg.tool_calls:
-                output.append(f"Tool Calls: {msg.tool_calls}")
+    def disconnect(self, websocket: WebSocket):
+        self.active_connections.remove(websocket)
 
-        elif isinstance(msg, ToolMessage):
-            output.append(f"Tool Result: {msg.content}")
+    async def send_personal_message(self, message: str, websocket: WebSocket):
+        await websocket.send_text(message)
 
-    return "\n".join(output)
+    async def broadcast(self, message: str):
+        for connection in self.active_connections:
+            await connection.send_text(message)
 
-# for event in graph.stream(
-#     {"messages": [HumanMessage(content="what is error code 4 in advance board")]},
-#     stream_mode="tasks"
-# ):
+manager = ConnectionManager()
 
-#     pass
-#     print("\n" + "-"*40)
-    
-#     task = {}
-#     if 'name' in event:
-#         # print(f"Task Name: {event['name']}")
-#         task['name'] = event['name']
-#     if 'input' in event:
-#         # print("Status: Getting Input...")
-#         task['input'] = "Getting Input..."
-        
-#     if 'result' in event and event['result']:
-#         messages = event['result'].get('messages', [])
-        
-#         for msg in messages:
-            
-#             if isinstance(msg, AIMessage):
-                
-#                 if msg.tool_calls:
-#                     # print("🛠 Tool Call Detected:")
-#                     toolsCall = []
-#                     for tool in msg.tool_calls:
-#                         toolObj = {}
-#                         toolObj['name'] = tool['name']
-#                         toolObj['args'] = tool['args']
-#                         # print(f"  - Tool: {tool['name']}")
-#                         # print(f"  - Args: {tool['args']}")
-#                         toolsCall.append( toolObj )
-#                     if len( toolsCall ) :
-#                         task['tools'] = toolsCall
-#                 else :
-#                     task['ai_resault'] = msg.content     
-#             elif isinstance(msg , ToolMessage):
-#                 task['tool_result'] = "tool create resault"
-#     print(task)
+
+def serialize_stream_chunk(chunk: dict) -> str:
+    return json.dumps(chunk, default=str, ensure_ascii=False)
+
+
+@app.websocket("/ws/{client_id}")
+async def websocket_endpoint(websocket: WebSocket, client_id: int):
+    await manager.connect(websocket)
+
+    current_task = None
+
+    try:
+        while True:
+            data = await websocket.receive_text()
+
+            # cancel previous run if still running
+            if current_task and not current_task.done():
+                current_task.cancel()
+
+            async def run_graph():
+                try:
+                    async for chunk in graph.astream(
+                        {
+                            "query": data,
+                            "history": [],
+                            "messages": [],
+                            "userid": str(client_id),
+                        },
+                        version='v2',
+                        stream_mode="custom",
+                    ):
+                        await manager.send_personal_message(
+                            serialize_stream_chunk(chunk['data']),
+                            websocket,
+                        )
+
+                    await manager.send_personal_message(
+                        json.dumps({"done": True}, ensure_ascii=False),
+                        websocket,
+                    )
+
+                except asyncio.CancelledError:
+                    return
+
+                except Exception as e:
+                    await manager.send_personal_message(
+                        json.dumps({"error": str(e)}, ensure_ascii=False),
+                        websocket,
+                    )
+
+            current_task = asyncio.create_task(run_graph())
+        # while True:
+        #     data = await websocket.receive_text()
+
+        #     # try:
+        #     #     payload = json.loads(data)
+        #     # except json.JSONDecodeError:
+        #     #     payload = {"query": data}
+
+        #     # query = payload.get("query", data)
+        #     # history = payload.get("history", [])
+        #     # userid = payload.get("userid", str(client_id))
+
+        #     async for chunk in graph.astream(
+        #         {
+        #             "query": 'hello',
+        #             "history": [],
+        #             "messages": [],
+        #             "userid": '',
+        #         },
+        #         stream_mode="custom",
+        #     ):
+        #         await manager.send_personal_message(
+        #             serialize_stream_chunk(chunk),
+        #             websocket,
+        #         )
+
+        #     await manager.send_personal_message(
+        #         json.dumps({"done": True}, ensure_ascii=False),
+        #         websocket,
+        #     )
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+    except Exception:
+        logger.exception("WebSocket error for client %s", client_id)
+        manager.disconnect(websocket)
+
+
+# def format_messages(messages):
+#     output = []
+
+#     for msg in messages:
+#         if isinstance(msg, HumanMessage):
+#             output.append(f"Human: {msg.content}")
+
+#         elif isinstance(msg, AIMessage):
+#             output.append(f"AI: {msg.content}")
+
+#             if msg.tool_calls:
+#                 output.append(f"Tool Calls: {msg.tool_calls}")
+
+#         elif isinstance(msg, ToolMessage):
+#             output.append(f"Tool Result: {msg.content}")
+
+#     return "\n".join(output)
