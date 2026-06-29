@@ -110,7 +110,11 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
     try:
         while True:
             data = await websocket.receive_text()
+ 
+            payload = json.loads(data)
 
+            agent_input = AgentInput(**payload)
+                
             # cancel previous run if still running
             if current_task and not current_task.done():
                 current_task.cancel()
@@ -119,10 +123,10 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
                 try:
                     async for chunk in graph.astream(
                         {
-                            "query": data,
-                            "history": [],
+                            "query": agent_input.query,
+                            "history": agent_input.history,
                             "messages": [],
-                            "userid": str(client_id),
+                            "userid": agent_input.userid,
                         },
                         version='v2',
                         stream_mode="custom",
@@ -147,36 +151,7 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
                     )
 
             current_task = asyncio.create_task(run_graph())
-        # while True:
-        #     data = await websocket.receive_text()
 
-        #     # try:
-        #     #     payload = json.loads(data)
-        #     # except json.JSONDecodeError:
-        #     #     payload = {"query": data}
-
-        #     # query = payload.get("query", data)
-        #     # history = payload.get("history", [])
-        #     # userid = payload.get("userid", str(client_id))
-
-        #     async for chunk in graph.astream(
-        #         {
-        #             "query": 'hello',
-        #             "history": [],
-        #             "messages": [],
-        #             "userid": '',
-        #         },
-        #         stream_mode="custom",
-        #     ):
-        #         await manager.send_personal_message(
-        #             serialize_stream_chunk(chunk),
-        #             websocket,
-        #         )
-
-        #     await manager.send_personal_message(
-        #         json.dumps({"done": True}, ensure_ascii=False),
-        #         websocket,
-        #     )
     except WebSocketDisconnect:
         manager.disconnect(websocket)
     except Exception:

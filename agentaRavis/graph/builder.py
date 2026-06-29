@@ -21,7 +21,7 @@ def _safe_stream_payload(value) -> dict:
 def init_state(state: AgentState):
 
     my_stream_writer = get_stream_writer()
-    my_stream_writer({"init_state": "init state"})
+    my_stream_writer({"init_state": type(state["history"])})
 
     userid = state.get("userid") or ""
     memory = fetch_user_memory(userid)
