@@ -7,7 +7,7 @@ from agentaRavis.tools.menu_terse_retriver import menu_terse_retriever_tool
 from agentaRavis.tools.errors_advance_terse_retreiver import errors_advance_terse_retriever_tool
 from agentaRavis.tools.hd5l_retriever import hd5l_hpmont_retriever_tool
 from agentaRavis.tools.qma1200a_retriever import qma_1200a_retriever_tool
-
+from agentaRavis.tools.hevos_retrever import hevos_retriever_tool
 TOOLS = [
     get_errorCode_by_code,
     create_ticket_for_support,
@@ -16,6 +16,7 @@ TOOLS = [
     yaskawa_l1000a_retriever_tool,
     hd5l_hpmont_retriever_tool,
     qma_1200a_retriever_tool,
+    hevos_retriever_tool,
     menu_advance_retriever_tool,
     menu_terse_retriever_tool,
     errors_advance_terse_retriever_tool,
