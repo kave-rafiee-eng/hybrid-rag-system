@@ -19,18 +19,11 @@ import asyncio
 
 app = FastAPI()
 
-ALLOWED_ORIGINS = [
-    "http://localhost:3001",
-    "http://127.0.0.1:3001",
-    "http://109.125.149.108:3001",
-]
-
 
 def cors_headers(origin: str | None) -> dict[str, str]:
-    allow_origin = origin if origin in ALLOWED_ORIGINS else (origin or "*")
     return {
-        "Access-Control-Allow-Origin": allow_origin,
-        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+        "Access-Control-Allow-Origin": origin or "*",
+        "Access-Control-Allow-Methods": "*",
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Max-Age": "600",
         "Vary": "Origin",
@@ -47,11 +40,10 @@ async def ensure_cors(request: Request, call_next):
     return response
 
 
-# Last added middleware is outermost in FastAPI; keep CORS here too.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|109\.125\.149\.108)(:\d+)?",
+    allow_origins=["*"],
+    allow_origin_regex=".*",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
