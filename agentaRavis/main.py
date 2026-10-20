@@ -12,17 +12,50 @@ from agentaRavis.schemas.history import LangChainHistoryMessage
 
 from fastapi import FastAPI, WebSocket , WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.requests import Request
+from starlette.responses import Response
 import json
 import asyncio
 
 app = FastAPI()
 
+ALLOWED_ORIGINS = [
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
+    "http://109.125.149.108:3001",
+]
+
+
+def cors_headers(origin: str | None) -> dict[str, str]:
+    allow_origin = origin if origin in ALLOWED_ORIGINS else (origin or "*")
+    return {
+        "Access-Control-Allow-Origin": allow_origin,
+        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Max-Age": "600",
+        "Vary": "Origin",
+    }
+
+
+@app.middleware("http")
+async def ensure_cors(request: Request, call_next):
+    origin = request.headers.get("origin")
+    if request.method == "OPTIONS":
+        return Response(status_code=204, headers=cors_headers(origin))
+    response = await call_next(request)
+    response.headers.update(cors_headers(origin))
+    return response
+
+
+# Last added middleware is outermost in FastAPI; keep CORS here too.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|109\.125\.149\.108)(:\d+)?",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 
@@ -157,6 +190,12 @@ async def websocket_endpoint(websocket: WebSocket, client_id: int):
     except Exception:
         logger.exception("WebSocket error for client %s", client_id)
         manager.disconnect(websocket)
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("agentaRavis.main:app", host="0.0.0.0", port=8000, reload=True)
 
 
 # def format_messages(messages):
